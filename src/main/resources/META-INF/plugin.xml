@@ -1,0 +1,44 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.liuujun.class2dml</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Class2dml</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="liujun@liuujun.com" url="https://liuujun.com">liuujun.com</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+    <p>
+        This is a tool for generating DML statements through Java source code.
+        Right click in the Java file editor and select `Generate... -> BuildDML` to generate SQL.
+    </p>
+    <p>
+        这是一个通过Java源码生成DML语句的工具，在Java文件的编辑器中点击鼠标右键，选择`生成... -> 生成DML`即可生成SQL。
+    </p>
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup displayType="BALLOON" id="CLASS2DML_GROUP"/>
+        <applicationConfigurable parentId="tools" id="com.liuujun.class2dml.setting.Class2dmlConfigurable"
+                                 instance="com.liuujun.class2dml.setting.Class2dmlConfigurable"
+                                 displayName="Class2DML"/>
+    </extensions>
+    <actions>
+        <action id="DMLAction" class="com.liuujun.class2dml.action.DMLAction">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+    </actions>
+</idea-plugin>
