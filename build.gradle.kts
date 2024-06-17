@@ -13,7 +13,7 @@ plugins {
 fun dateValue(pattern: String): String = LocalDate.now(ZoneId.of("Asia/Shanghai")).format(DateTimeFormatter.ofPattern(pattern))
 
 group = "com.liuujun"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -72,6 +72,6 @@ tasks {
 
     publishPlugin {
         token.set(System.getenv("IDEA_TOKEN"))
-        channels.set(listOf("EAP"))
+        channels.set(listOf("default","EAP"))
     }
 }
