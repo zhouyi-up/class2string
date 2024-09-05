@@ -34,7 +34,7 @@
         <notificationGroup displayType="BALLOON" id="CLASS2DML_GROUP"/>
         <applicationConfigurable parentId="tools" id="com.liuujun.class2dml.setting.Class2dmlConfigurable"
                                  instance="com.liuujun.class2dml.setting.Class2dmlConfigurable"
-                                 displayName="Class2DML"/>
+                                 displayName="Class2String"/>
     </extensions>
     <actions>
         <action id="DMLAction" class="com.liuujun.class2dml.action.DMLAction">
