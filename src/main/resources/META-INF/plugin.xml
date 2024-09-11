@@ -15,11 +15,11 @@
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
     <p>
-        This is a tool for generating DML statements through Java source code.
-        Right click in the Java file editor and select `Generate... -> BuildDML` to generate SQL.
+        This is a tool for generating DDL statements through Java source code.
+        Right click in the Java file editor and select `Generate... -> To DDL` to generate SQL.
     </p>
     <p>
-        这是一个通过Java源码生成DML语句的工具，在Java文件的编辑器中点击鼠标右键，选择`生成... -> 生成DML`即可生成SQL。
+        这是一个通过Java源码生成DDL语句的工具，在Java文件的编辑器中点击鼠标右键，选择`生成... -> To DDL`即可生成SQL。
     </p>
   ]]></description>
 
@@ -37,7 +37,13 @@
                                  displayName="Class2String"/>
     </extensions>
     <actions>
-        <action id="DMLAction" class="com.liuujun.class2dml.action.DMLAction">
+        <action id="DMLAction" class="com.liuujun.class2dml.action.DDLAction">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+        <action id="TypeScriptTypeAction" class="com.liuujun.class2dml.action.TypeScriptTypeAction">
+            <add-to-group group-id="GenerateGroup" anchor="last"/>
+        </action>
+        <action id="TypeScriptInterfaceAction" class="com.liuujun.class2dml.action.TypeScriptInterfaceAction">
             <add-to-group group-id="GenerateGroup" anchor="last"/>
         </action>
     </actions>

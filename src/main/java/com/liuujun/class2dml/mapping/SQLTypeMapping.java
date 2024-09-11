@@ -1,4 +1,4 @@
-package com.liuujun.class2dml;
+package com.liuujun.class2dml.mapping;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * @author liujun
  */
-public class TypeMapping {
+public class SQLTypeMapping {
 
     public static Map<String, String> DEFAULT_TYPE_MAPPING = new HashMap<String, String>();
 
@@ -30,6 +30,5 @@ public class TypeMapping {
         DEFAULT_TYPE_MAPPING.put("java.time.LocalDateTime", "datetime");
         DEFAULT_TYPE_MAPPING.put("java.util.Date", "datetime");
         DEFAULT_TYPE_MAPPING.put("java.time.LocalTime", "timestamp");
-
     }
 }

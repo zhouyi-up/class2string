@@ -3,7 +3,7 @@ package com.liuujun.class2dml.setting;
 import com.intellij.openapi.application.ApplicationManager;
 import com.liuujun.class2dml.SettingState;
 import com.liuujun.class2dml.SettingStorage;
-import com.liuujun.class2dml.TypeMapping;
+import com.liuujun.class2dml.mapping.SQLTypeMapping;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class TypeDataModel extends AbstractTableModel {
         SettingState state = settingStorage.getState();
         Map<String, String> typeMapping = state.getTypeMapping();
         if (typeMapping.isEmpty()){
-            typeMapping.putAll(TypeMapping.DEFAULT_TYPE_MAPPING);
+            typeMapping.putAll(SQLTypeMapping.DEFAULT_TYPE_MAPPING);
         }
         typeMapping.entrySet().stream().map(entry ->{
             TypeModel typeModel = new TypeModel();

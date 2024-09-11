@@ -10,7 +10,7 @@ import com.intellij.psi.javadoc.PsiDocComment;
 import com.liuujun.class2dml.Class2dmlBundle;
 import com.liuujun.class2dml.SettingState;
 import com.liuujun.class2dml.SettingStorage;
-import com.liuujun.class2dml.TypeMapping;
+import com.liuujun.class2dml.mapping.SQLTypeMapping;
 import com.liuujun.class2dml.utils.ABCUtils;
 import com.liuujun.class2dml.utils.ClassCheckUtils;
 import com.liuujun.class2dml.utils.NotificationUtils;
@@ -23,13 +23,13 @@ import java.util.*;
 /**
  * 生成DML
  */
-public class DMLAction extends AnAction {
+public class DDLAction extends AnAction {
 
     private static final String CREATE_SQL = "create table %s ( %s );";
     private static final String COLUMN_SQL = "%s %s ";
 
-    public DMLAction() {
-        super(Class2dmlBundle.message("action.dml.title"));
+    public DDLAction() {
+        super(Class2dmlBundle.message("action.ddl.title"));
     }
 
     @Override
@@ -49,14 +49,16 @@ public class DMLAction extends AnAction {
         SettingState state = settingStorage.getState();
         Map<String, String> typeMapping = state.getTypeMapping();
         if (typeMapping.isEmpty()){
-            typeMapping.putAll(TypeMapping.DEFAULT_TYPE_MAPPING);
+            typeMapping.putAll(SQLTypeMapping.DEFAULT_TYPE_MAPPING);
         }
 
         //Class
         PsiElement psiClas = first.get();
         PsiClassImpl psiClassImpl = (PsiClassImpl) psiClas;
         PsiField[] allFields = psiClassImpl.getAllFields();
-
+        if (allFields.length == 0) {
+            return;
+        }
 
         String tableName = psiClassImpl.getName();
         StringJoiner columns = new StringJoiner(",");
