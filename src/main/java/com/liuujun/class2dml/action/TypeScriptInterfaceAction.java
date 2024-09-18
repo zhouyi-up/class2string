@@ -47,7 +47,7 @@ public class TypeScriptInterfaceAction extends AnAction {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("interface {\n");
+        sb.append("interface %s {\n".formatted(psiClassImpl.getName()));
         for (PsiField psiField : allFields) {
             String name = psiField.getName();
 
@@ -55,7 +55,7 @@ public class TypeScriptInterfaceAction extends AnAction {
             String fullClass = type.getCanonicalText();
             String typeName = TypeScriptMapping.type(fullClass);
 
-            sb.append("\t%s %s;\n".formatted(name, typeName));
+            sb.append("\t%s: %s;\n".formatted(name, typeName));
         }
         sb.append("}\n");
 

@@ -47,7 +47,7 @@ public class TypeScriptTypeAction extends AnAction {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("type {\n");
+        sb.append("type %s = {\n".formatted(psiClassImpl.getName()));
         for (PsiField psiField : allFields) {
             String name = psiField.getName();
 
@@ -55,7 +55,7 @@ public class TypeScriptTypeAction extends AnAction {
             String fullClass = type.getCanonicalText();
             String typeName = TypeScriptMapping.type(fullClass);
 
-            sb.append("\t%s %s;\n".formatted(name, typeName));
+            sb.append("\t%s:%s;\n".formatted(name, typeName));
         }
         sb.append("}\n");
 
