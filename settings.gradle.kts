@@ -5,4 +5,4 @@ pluginManagement {
     }
 }
 
-rootProject.name = "class2dml"
+rootProject.name = "class2string"
