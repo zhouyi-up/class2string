@@ -25,8 +25,8 @@ import java.util.*;
  */
 public class DDLAction extends AnAction {
 
-    private static final String CREATE_SQL = "create table %s ( %s );";
-    private static final String COLUMN_SQL = "%s %s ";
+    private static final String CREATE_SQL = "create table %s ( %s \n);";
+    private static final String COLUMN_SQL = "\n\t%s %s ";
 
     public DDLAction() {
         super(Class2dmlBundle.message("action.ddl.title"));

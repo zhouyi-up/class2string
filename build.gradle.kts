@@ -13,7 +13,7 @@ plugins {
 fun dateValue(pattern: String): String = LocalDate.now(ZoneId.of("Asia/Shanghai")).format(DateTimeFormatter.ofPattern(pattern))
 
 group = "com.liuujun"
-version = "1.1.1"
+version = "1.1.2"
 
 repositories {
     mavenCentral()
