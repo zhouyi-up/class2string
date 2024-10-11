@@ -1,4 +1,4 @@
-# Class2Dml
+# Class2String
 
 一款可以根据Java类生成数据库创建脚本的IDEA插件。
 
