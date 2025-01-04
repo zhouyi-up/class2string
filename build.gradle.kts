@@ -14,7 +14,7 @@ plugins {
 fun dateValue(pattern: String): String = LocalDate.now(ZoneId.of("Asia/Shanghai")).format(DateTimeFormatter.ofPattern(pattern))
 
 group = "com.liuujun"
-version = "1.1.5"
+version = "1.1.6"
 
 repositories {
     mavenCentral()
@@ -30,7 +30,7 @@ dependencies {
     implementation("org.apache.commons:commons-lang3:3.14.0")
 
     intellijPlatform{
-        intellijIdeaUltimate("2024.2.4")
+        intellijIdeaUltimate("2024.3.1")
         bundledPlugins("com.intellij.java")
 
         instrumentationTools()

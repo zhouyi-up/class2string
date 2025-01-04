@@ -3,6 +3,7 @@ package com.liuujun.class2dml.action;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiFile;
@@ -59,7 +60,11 @@ public class TypeScriptInterfaceAction extends AnAction {
         }
         sb.append("}\n");
 
-        SQLResultDialog sqlResultDialog = new SQLResultDialog(e.getProject(),sb.toString());
+        String result = sb.toString();
+        System.out.println(result);
+        Logger logger = Logger.getInstance("TSInterface");
+        logger.info("%s %s".formatted("Result", result));
+        SQLResultDialog sqlResultDialog = new SQLResultDialog(e.getProject(),result);
         sqlResultDialog.show();
     }
 }
