@@ -14,7 +14,7 @@ plugins {
 fun dateValue(pattern: String): String = LocalDate.now(ZoneId.of("Asia/Shanghai")).format(DateTimeFormatter.ofPattern(pattern))
 
 group = "com.liuujun"
-version = "1.1.3"
+version = "1.1.5"
 
 repositories {
     mavenCentral()
@@ -67,7 +67,7 @@ intellijPlatform {
     }
     publishing {
         token = System.getenv("IDEA_TOKEN")
-        channels = listOf("eap")
+        channels = listOf("default")
         ideServices = false
         hidden = false
     }
@@ -83,7 +83,7 @@ intellijPlatform {
 changelog {
     header.set(provider { "${version.get()} (${dateValue("yyyy/MM/dd")})" })
     groups.empty()
-    repositoryUrl = "https://plugins.jetbrains.com/plugin/24215-class2dml"
+    repositoryUrl = "https://plugins.jetbrains.com/plugin/24215-class2string"
 }
 
 tasks {
@@ -97,8 +97,6 @@ tasks {
     }
 
     patchPluginXml {
-        sinceBuild.set("232")
-        untilBuild.set("243.*")
         changeNotes.set(provider {
             changelog.renderItem(
                 changelog

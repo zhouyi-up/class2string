@@ -31,8 +31,8 @@ import java.util.Collection;
 public class SQLResultDialog extends DialogWrapper {
 
     private final String sql;
-    private final JBTextArea jbTextArea;
     private final EditorTextField editorTextField;
+    private JBScrollPane scrollPane;
 
     public SQLResultDialog(Project project, String sql) {
         super(project, true);
@@ -44,9 +44,9 @@ public class SQLResultDialog extends DialogWrapper {
         this.editorTextField.setOneLineMode(false);
         this.editorTextField.setViewer(false);
 
-        this.jbTextArea = new JBTextArea(this.sql);
-        this.jbTextArea.setLineWrap(true);
-        this.jbTextArea.setWrapStyleWord(true);
+        this.scrollPane = new JBScrollPane();
+        this.scrollPane.add(new Button("sss"));
+
         setTitle(Class2dmlBundle.message("sql.result.title"));
         setSize(500, 300);
         init();
@@ -55,7 +55,7 @@ public class SQLResultDialog extends DialogWrapper {
     @Override
     protected @Nullable JComponent createCenterPanel() {
         return FormBuilder.createFormBuilder()
-                .addComponent(new JBScrollPane(editorTextField))
+                .addComponent(scrollPane)
                 .getPanel();
     }
 
