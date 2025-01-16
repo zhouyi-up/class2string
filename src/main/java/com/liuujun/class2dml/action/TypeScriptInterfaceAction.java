@@ -11,6 +11,7 @@ import com.intellij.psi.PsiType;
 import com.intellij.psi.impl.source.PsiClassImpl;
 import com.liuujun.class2dml.Class2dmlBundle;
 import com.liuujun.class2dml.mapping.TypeScriptMapping;
+import com.liuujun.class2dml.ui.ShowCodeDialog;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -64,7 +65,8 @@ public class TypeScriptInterfaceAction extends AnAction {
         System.out.println(result);
         Logger logger = Logger.getInstance("TSInterface");
         logger.info("%s %s".formatted("Result", result));
-        SQLResultDialog sqlResultDialog = new SQLResultDialog(e.getProject(),result);
-        sqlResultDialog.show();
+
+        ShowCodeDialog showCodeDialog = new ShowCodeDialog(result);
+        showCodeDialog.show();
     }
 }

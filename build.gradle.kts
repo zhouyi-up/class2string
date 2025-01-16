@@ -14,7 +14,7 @@ plugins {
 fun dateValue(pattern: String): String = LocalDate.now(ZoneId.of("Asia/Shanghai")).format(DateTimeFormatter.ofPattern(pattern))
 
 group = "com.liuujun"
-version = "1.1.6"
+version = "1.1.7"
 
 repositories {
     mavenCentral()
@@ -37,13 +37,6 @@ dependencies {
     }
 }
 
-// Configure Gradle IntelliJ Plugin
-// Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
-//intellij {
-//    version.set("2023.3.5")
-//    type.set("IC") // Target IDE Platform
-//    plugins.set(listOf("java"))
-//}
 intellijPlatform {
     buildSearchableOptions = true
     instrumentCode = true
@@ -56,7 +49,7 @@ intellijPlatform {
 
         ideaVersion{
             sinceBuild = "232"
-            untilBuild = "243.*"
+            untilBuild = "251.*"
         }
 
         vendor {

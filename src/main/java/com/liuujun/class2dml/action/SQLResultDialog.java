@@ -28,6 +28,7 @@ import java.util.Collection;
 /**
  * @author liujun
  */
+@Deprecated
 public class SQLResultDialog extends DialogWrapper {
 
     private final String sql;

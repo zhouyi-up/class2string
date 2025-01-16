@@ -11,6 +11,7 @@ import com.liuujun.class2dml.Class2dmlBundle;
 import com.liuujun.class2dml.SettingState;
 import com.liuujun.class2dml.SettingStorage;
 import com.liuujun.class2dml.mapping.SQLTypeMapping;
+import com.liuujun.class2dml.ui.ShowCodeDialog;
 import com.liuujun.class2dml.utils.ABCUtils;
 import com.liuujun.class2dml.utils.ClassCheckUtils;
 import com.liuujun.class2dml.utils.NotificationUtils;
@@ -26,7 +27,7 @@ import java.util.*;
 public class DDLAction extends AnAction {
 
     private static final String CREATE_SQL = "create table %s ( %s \n);";
-    private static final String COLUMN_SQL = "\n\t%s %s ";
+    private static final String COLUMN_SQL = "\n    %s %s ";
 
     public DDLAction() {
         super(Class2dmlBundle.message("action.ddl.title"));
@@ -99,7 +100,7 @@ public class DDLAction extends AnAction {
         }
         String DML = CREATE_SQL.formatted(tableName, columns.toString());
 
-        SQLResultDialog sqlResultDialog = new SQLResultDialog(e.getProject(),DML);
-        sqlResultDialog.show();
+        ShowCodeDialog showCodeDialog = new ShowCodeDialog(DML);
+        showCodeDialog.show();
     }
 }
