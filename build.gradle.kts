@@ -1,24 +1,27 @@
 import org.jetbrains.changelog.Changelog
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.22"
-    id("org.jetbrains.intellij.platform") version "2.1.0"
-    id("org.jetbrains.intellij.platform.migration") version "2.1.0"
-    id("org.jetbrains.changelog") version "2.2.0"
+    id("org.jetbrains.kotlin.jvm") version "2.1.0"
+    id("org.jetbrains.intellij.platform") version "2.7.1"
+//    id("org.jetbrains.intellij.platform.migration") version "2.1.0"
+    id("org.jetbrains.changelog") version "2.4.0"
 }
 
 fun dateValue(pattern: String): String = LocalDate.now(ZoneId.of("Asia/Shanghai")).format(DateTimeFormatter.ofPattern(pattern))
 
 group = "com.liuujun"
-version = "1.1.7"
+version = "1.1.8"
 
 repositories {
+    maven {
+        url = uri("https://maven.aliyun.com/repository/public")
+    }
     mavenCentral()
-
     intellijPlatform{
         defaultRepositories()
     }
@@ -27,13 +30,12 @@ repositories {
 dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.0")
     implementation("com.fasterxml.jackson.core:jackson-core:2.17.0")
-    implementation("org.apache.commons:commons-lang3:3.14.0")
+    implementation("org.apache.commons:commons-lang3:3.18.0")
 
     intellijPlatform{
-        intellijIdeaUltimate("2024.3.1")
+        intellijIdeaUltimate("2025.2")
         bundledPlugins("com.intellij.java")
-
-        instrumentationTools()
+//        instrumentationTools()
     }
 }
 
@@ -49,26 +51,20 @@ intellijPlatform {
 
         ideaVersion{
             sinceBuild = "232"
-            untilBuild = "251.*"
+            untilBuild = "253.*"
         }
 
         vendor {
-            name = "Liujun"
+            name = "LiuJun"
             email = "liujun@liuujun.com"
             url = "https://liuujun.com"
         }
     }
     publishing {
         token = System.getenv("IDEA_TOKEN")
-        channels = listOf("default")
+        channels = listOf("EAP")
         ideServices = false
         hidden = false
-    }
-    signing {
-        // ...
-    }
-    pluginVerification {
-        // ...
     }
 }
 
@@ -86,7 +82,7 @@ tasks {
         targetCompatibility = "17"
     }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
+        compilerOptions.jvmTarget.set(JvmTarget.JVM_17)
     }
 
     patchPluginXml {
