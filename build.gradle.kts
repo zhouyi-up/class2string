@@ -62,7 +62,7 @@ intellijPlatform {
     }
     publishing {
         token = System.getenv("IDEA_TOKEN")
-        channels = listOf("EAP")
+        channels = listOf("default")
         ideServices = false
         hidden = false
     }
