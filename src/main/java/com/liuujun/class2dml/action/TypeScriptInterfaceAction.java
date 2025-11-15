@@ -3,6 +3,7 @@ package com.liuujun.class2dml.action;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.PlatformDataKeys;
+import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiField;
 import com.intellij.psi.PsiFile;
@@ -10,6 +11,7 @@ import com.intellij.psi.PsiType;
 import com.intellij.psi.impl.source.PsiClassImpl;
 import com.liuujun.class2dml.Class2dmlBundle;
 import com.liuujun.class2dml.mapping.TypeScriptMapping;
+import com.liuujun.class2dml.ui.ShowCodeDialog;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -59,7 +61,12 @@ public class TypeScriptInterfaceAction extends AnAction {
         }
         sb.append("}\n");
 
-        SQLResultDialog sqlResultDialog = new SQLResultDialog(e.getProject(),sb.toString());
-        sqlResultDialog.show();
+        String result = sb.toString();
+        System.out.println(result);
+        Logger logger = Logger.getInstance("TSInterface");
+        logger.info("%s %s".formatted("Result", result));
+
+        ShowCodeDialog showCodeDialog = new ShowCodeDialog(result);
+        showCodeDialog.show();
     }
 }

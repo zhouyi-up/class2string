@@ -10,6 +10,7 @@ import com.intellij.psi.PsiType;
 import com.intellij.psi.impl.source.PsiClassImpl;
 import com.liuujun.class2dml.Class2dmlBundle;
 import com.liuujun.class2dml.mapping.TypeScriptMapping;
+import com.liuujun.class2dml.ui.ShowCodeDialog;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
@@ -59,7 +60,7 @@ public class TypeScriptTypeAction extends AnAction {
         }
         sb.append("}\n");
 
-        SQLResultDialog sqlResultDialog = new SQLResultDialog(e.getProject(),sb.toString());
-        sqlResultDialog.show();
+        ShowCodeDialog showCodeDialog = new ShowCodeDialog(sb.toString());
+        showCodeDialog.show();
     }
 }
