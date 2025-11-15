@@ -4,7 +4,7 @@
 
 ![GitHub top language](https://img.shields.io/github/languages/top/zhouyi-up/class2string)
 ![GitHub repo size](https://img.shields.io/github/repo-size/zhouyi-up/class2string)
-![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/zhouyi-up/class2dml/total)
+![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/zhouyi-up/class2string/total)
 
 
 ## 安装
